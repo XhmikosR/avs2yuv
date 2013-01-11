@@ -158,8 +158,11 @@ add_outfile:
 			char *cmd = new char[100+strlen(hfyufile)];
 			sprintf(cmd, "mencoder - -o \"%s\" -quiet -ovc lavc -lavcopts vcodec=ffvhuff:vstrict=-1:pred=2:context=1", hfyufile);
 			out_fh[out_fhs] = popen(cmd, "wb");
-			if(!out_fh[out_fhs])
-				{fprintf(stderr, "failed to exec mencoder\n"); return 1;}
+			if(!out_fh[out_fhs]) {
+				fprintf(stderr, "failed to exec mencoder\n");
+				delete [] cmd;
+				return 1;
+			}
 			y4m_headers[out_fhs] = 1;
 			out_fhs++;
 			delete [] cmd;
@@ -232,7 +235,7 @@ add_outfile:
 			if(verbose)
 				fprintf(stderr, "%d\n", frm);
 		}
-	} catch(AvisynthError err) {
+	} catch(AvisynthError &err) {
 		if(frm >= 0)
 			fprintf(stderr, "\nAvisynth error at frame %d:\n%s\n", frm, err.msg);
 		else
