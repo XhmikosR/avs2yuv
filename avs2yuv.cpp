@@ -148,9 +148,9 @@ add_outfile:
 
         fprintf(stderr, "%s: %dx%d, ", infile, inf.width, inf.height);
         if (inf.fps_denominator == 1) {
-            fprintf(stderr, "%d fps, ", inf.fps_numerator);
+            fprintf(stderr, "%u fps, ", inf.fps_numerator);
         } else {
-            fprintf(stderr, "%d/%d fps, ", inf.fps_numerator, inf.fps_denominator);
+            fprintf(stderr, "%u/%u fps, ", inf.fps_numerator, inf.fps_denominator);
         }
         fprintf(stderr, "%d frames\n", inf.num_frames);
 
@@ -206,7 +206,7 @@ add_outfile:
             if (!y4m_headers[i]) {
                 continue;
             }
-            fprintf(out_fh[i], "YUV4MPEG2 W%d H%d F%ld:%ld Ip A0:0\n",
+            fprintf(out_fh[i], "YUV4MPEG2 W%d H%d F%u:%u Ip A0:0\n",
                     inf.width, inf.height, inf.fps_numerator, inf.fps_denominator);
             fflush(out_fh[i]);
         }
