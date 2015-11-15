@@ -1,5 +1,8 @@
+/*.db
+/*.opendb
 /*.opensdf
 /*.sdf
 /*.suo
 /Debug
 /Release
+/.vs
