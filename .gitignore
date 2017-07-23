@@ -3,6 +3,7 @@
 /*.opensdf
 /*.sdf
 /*.suo
-/Debug
-/Release
-/.vs
+/avs2yuv.vcxproj.user
+/.vs/
+/Debug/
+/Release/
